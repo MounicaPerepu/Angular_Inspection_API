@@ -12,6 +12,8 @@ import { InspectionApiService } from './services/inspection-api.service';
 import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
 import { QrcodeGeneratorComponent } from './qrcode-generator/qrcode-generator.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { CodingFunctionalityComponent } from './coding-functionality/coding-functionality.component';
+import { CodingFunctionalityService } from './services/coding-functionality.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     ShowInspectionComponent,
     AddEditInspectionComponent,
     PaymentGatewayComponent,
-    QrcodeGeneratorComponent
+    QrcodeGeneratorComponent,
+    CodingFunctionalityComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     ReactiveFormsModule,
     QRCodeModule
   ],
-  providers: [InspectionApiService],
+  providers: [InspectionApiService, CodingFunctionalityService],
   bootstrap: [AppComponent, InspectionComponent, ShowInspectionComponent, AddEditInspectionComponent]
 })
 export class AppModule { }

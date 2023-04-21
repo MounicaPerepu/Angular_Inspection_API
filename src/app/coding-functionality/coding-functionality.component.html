@@ -1,0 +1,85 @@
+<h3 style="padding-top: 1.5rem;">Coding Functionality Replica
+    <button type="submit" class="btn btn-primary float-end btn-sm" (click)="onSubmit()">Submit</button>
+</h3>
+<br>
+<table class="table table-striped table-hover table-bordered border-primary">
+    <thead class="table-primary border-primary">
+        <tr>
+            <th>Order Type</th>
+            <th>Status</th>
+            <th>ICD Code</th>
+            <th>Add/Edit ICD Codes</th>
+            <th>Renal Status</th>
+            <th>Request/Cancel Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of codingItems; let i = index">
+            <td>{{item.orderType}}</td>
+            <td>{{item.orderStatus}}</td>
+            <td>
+                <input [title]="item.icdCodeString" type="text" [(ngModel)]="item.icdCodeString" name="icdCodeText{{i}}"
+                    id="icdCodeText{{i}}" (keydown.enter)="onEnter(i)" (keydown.ArrowDown)="onKeyDown(i)"
+                    (keydown.ArrowUp)="onKeyUp(i)" autofocus>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="onAddEditModal(item.icdCodes)"
+                    data-bs-toggle="modal" data-bs-target="#addEditModal"><span class="material-icons" style="font-size: 1rem;">
+                        edit
+                    </span></button>
+            </td>
+            <td>{{item.renalStatus}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                    (click)="onRequestOrCancel(item.isRequestButton ? 'requested' : 'cancelled')">{{item.isRequestButton
+                    ? 'Request' : item.isCancelButton
+                    ? 'Cancel' : ''}}</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="addEditModal" class="modal fade" tabindex="-1" aria-labelledby="addEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add/Edit Modal</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered border-primary table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ICD Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let code of icdCodes; let i = index">
+                            <td>
+                                <button type="button" class="btn btn-outline-danger btn-sm"
+                                    (click)="onRemoveIcdCode(i)"><span class="material-icons" style="font-size: 1rem;">
+                                        remove
+                                    </span></button>
+                            </td>
+                            <td>
+                                <input type="text" [(ngModel)]="code.name">
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: hidden;"><br>
+                            <button type="button" class="btn btn-outline-primary btn-sm" (click)="onAddIcdCode()"><span
+                                    class="material-icons" style="font-size: 1rem;">
+                                    add
+                                </span></button>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"
+                    (click)="onCloseModal()">Close</button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal"
+                    (click)="onSubmitIcdCodes()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+[
+    {
+        "orderType": "Treatment Order",
+        "orderStatus": "Submitted",
+        "icdCodes": [
+            {
+                "id": 1,
+                "name": "N14.1"
+            },
+            {
+                "id": 2,
+                "name": "Z99.2"
+            }
+        ],
+        "icdCodeString": "N14.1,Z99.2",
+        "renalStatus": "ESRD",
+        "isRequestButton": false,
+        "isCancelButton": true,
+        "isSubmitClicked": false
+    },
+    {
+        "orderType": "Lab Order",
+        "orderStatus": "Ordered",
+        "icdCodes": [
+            {
+                "id": 1,
+                "name": "N13.2"
+            }
+        ],
+        "icdCodeString": "N13.2",
+        "renalStatus": "AKI",
+        "isRequestButton": true,
+        "isCancelButton": false,
+        "isSubmitClicked": false
+    },
+    {
+        "orderType": "Medication Order",
+        "orderStatus": "Submitted",
+        "icdCodes": [
+            {
+                "id": 1,
+                "name": "D16.1"
+            },
+            {
+                "id": 2,
+                "name": "C97.2"
+            },
+            {
+                "id": "3",
+                "name": "A11.0"
+            }
+        ],
+        "icdCodeString": "D16,1,C97.2,A11.0",
+        "renalStatus": "ESRD",
+        "isRequestButton": false,
+        "isCancelButton": true,
+        "isSubmitClicked": false
+    }
+]
